@@ -35,8 +35,6 @@ class stack:
         return len(self.arr)
 
 # node class for expression tree
-
-
 class node:
     def __init__(self, data):
         self.data = data
@@ -44,8 +42,6 @@ class node:
         self.right = None
 
 # expression tree class
-
-
 class exp_tree:
     def __init__(self, postfix_exp):
         self.exp = postfix_exp

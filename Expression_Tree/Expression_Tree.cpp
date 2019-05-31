@@ -22,7 +22,7 @@ class node
     node *left, *right;
     node(char data)
     {
-        this->data = data;
+        this -> data = data;
         left = NULL;
         right = NULL;
     }
@@ -36,7 +36,7 @@ class exp_tree
     public:
     exp_tree(string postfix_exp)
     {
-        this->postfix_exp = postfix_exp;
+        this -> postfix_exp = postfix_exp;
         root = NULL;
         create_tree(postfix_exp);
     }
@@ -44,7 +44,7 @@ class exp_tree
     private:
     bool is_operator(char c)
     {
-        if(c == '+' || c == '-' || c == '*' || c == '/' || c == '^') // if given char is operator
+        if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') // if given char is operator
         {
             return true; // then return true
         }
@@ -57,14 +57,14 @@ class exp_tree
         stack<node *> s; // store those operator node whose any child node is NULL
         root = new node(exp[len-1]);
         s.push(root); // last character of postfix expression is always an operator
-        for(int i = len-2;i >= 0;i--) // travel on rest of the postfix expression
+        for (int i = len-2; i >= 0; i--) // travel on rest of the postfix expression
         {
             node* curr_node = s.top();
-            if(curr_node->right == NULL) // if right node of current node is NULL
+            if (curr_node -> right == NULL) // if right node of current node is NULL
             {
                 node *temp = new node(exp[i]);
-                curr_node->right = temp;
-                if(is_operator(exp[i]))
+                curr_node -> right = temp;
+                if (is_operator(exp[i]))
                 {
                     s.push(temp);
                 }
@@ -72,10 +72,10 @@ class exp_tree
             else // if left node of current node is NULL
             {
                 node *temp = new node(exp[i]);
-                curr_node->left = temp;
+                curr_node -> left = temp;
                 // if no child node of current node is NULL
                 s.pop(); // pop current from stack
-                if(is_operator(exp[i]))
+                if (is_operator(exp[i]))
                 {
                     s.push(temp);
                 }
@@ -85,14 +85,14 @@ class exp_tree
     void inorder_traversal(node *head) // inorder traversal of expression tree
     {
         // inorder traversal => left,root,right
-        if(head->left != NULL)
+        if (head -> left != NULL)
         {
-            inorder_traversal(head->left);
+            inorder_traversal(head -> left);
         }
-        cout << head->data << " ";
-        if(head->right != NULL)
+        cout << head -> data << " ";
+        if (head -> right != NULL)
         {
-            inorder_traversal(head->right);
+            inorder_traversal(head -> right);
         }
         return;
     }
